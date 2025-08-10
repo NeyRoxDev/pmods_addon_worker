@@ -1,0 +1,16 @@
+[Unit]
+Description=PMods Worker
+After=network.target
+
+[Service]
+Type=simple
+Environment=PTERO_HOST=https://panel.example.com
+Environment=PTERO_API=YOUR_API_KEY
+Environment=AUTO_RESTART=1
+WorkingDirectory=/opt/pmods/worker
+ExecStart=/usr/bin/node dist/src/index.js
+Restart=on-failure
+User=pmods
+
+[Install]
+WantedBy=multi-user.target
